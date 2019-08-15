@@ -26,10 +26,10 @@ node {
                  reportTitles: ''])
 }
 
-input 'Build docker image?'
-node {
-    stage('Build Docker Image')
-    
-    sh 'docker build -t gmdb/movies:${BUILD_NUMBER} .'
-
-}
+# input 'Build docker image?'
+# node {
+    # stage('Build Docker Image')
+    # 
+    # sh 'docker build -t gmdb/movies:${BUILD_NUMBER} .'
+# 
+# }
