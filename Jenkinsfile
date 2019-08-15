@@ -28,7 +28,7 @@ node {
 
 input 'Build docker image?'
 node {
-    stage('')
+    stage('Build Docker Image')
     
     sh 'docker build -t gmdb/movies:${BUILD_NUMBER} .'
 
