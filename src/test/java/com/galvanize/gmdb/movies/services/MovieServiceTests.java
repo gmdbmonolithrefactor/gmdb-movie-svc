@@ -21,10 +21,10 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringRunner.class)
 @TestPropertySource(locations="classpath:test.properties")
 public class MovieServiceTests {
-    public static int TEST_MOVIES_COUNT = 20;
-    public static String TEST_MOVIE_TITLE_PREFIX = "GMDB JUNIT TEST-";
+    private static int TEST_MOVIES_COUNT = 20;
+    private static String TEST_MOVIE_TITLE_PREFIX = "GMDB JUNIT TEST-";
 
-    List<Movie> moviesList = new ArrayList<>();
+    private List<Movie> moviesList = new ArrayList<>();
 
 
     @Autowired
@@ -34,8 +34,8 @@ public class MovieServiceTests {
     MovieService service;
 
     @Before
-    public void setUp() throws Exception {
-        Movie m = null;
+    public void setUp() {
+        Movie m;
         for (int i = 1; i < TEST_MOVIES_COUNT +1; i++) {
             m = new Movie();
             m.setTitle(TEST_MOVIE_TITLE_PREFIX +(i*13));
@@ -60,8 +60,15 @@ public class MovieServiceTests {
         assertEquals(testMovie.getTitle(), m.getTitle());
         assertEquals(testMovie.getImdbid(), m.getImdbid());
         assertEquals(testMovie.getMovieId(), m.getMovieId());
+    }
 
-
-
+    @Test
+    public void findRandomMovies() {
+        int MOVIES_TO_FIND = 3;
+        List<Movie> movies = service.findRandomMovies(MOVIES_TO_FIND);
+        assertEquals(MOVIES_TO_FIND, movies.size());
+        for(Movie movie : movies){
+            System.out.println(movie.getTitle());
+        }
     }
 }

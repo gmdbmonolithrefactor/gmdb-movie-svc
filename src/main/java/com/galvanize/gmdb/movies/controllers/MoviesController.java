@@ -10,8 +10,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/gmdb/api/movies")
 public class MoviesController {
+
+    private MovieService service;
+
     @Autowired
-    MovieService service;
+    public MoviesController(MovieService service) {
+        this.service = service;
+    }
 
     @GetMapping("/")
     public List<Movie> searchMovies(@RequestParam(name = "search", required = false) String searchString){
@@ -28,5 +33,9 @@ public class MoviesController {
         return service.findMovieById(id);
     }
 
+    @GetMapping("/rand")
+    public List<Movie> getRandomMovies(@RequestParam(required = false, defaultValue = "3") int qty){
+        return service.findRandomMovies(qty);
+    }
 
 }

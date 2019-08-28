@@ -7,12 +7,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service @Component
 public class MovieService {
 
+
+    private MovieRepository repository;
+
     @Autowired
-    MovieRepository repository;
+    public MovieService(MovieRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Movie> search(String searchString) {
         return repository.findMovieByTitleContains(searchString);
@@ -23,6 +29,11 @@ public class MovieService {
     }
 
     public Movie findMovieById(Long id){
-        return repository.findById(id).get();
+        Optional o =repository.findById(id);
+        return o.isPresent() ? (Movie)o.get() : null;
+    }
+
+    public List<Movie> findRandomMovies(int qty){
+        return repository.findRandomMovies(qty);
     }
 }

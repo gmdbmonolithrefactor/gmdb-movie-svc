@@ -30,10 +30,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @TestPropertySource(locations="classpath:test.properties")
 public class MovieControllerTests {
-    public static int TEST_MOVIES_COUNT = 20;
-    public static String TEST_MOVIE_TITLE_PREFIX = "GMDB JUNIT TEST-";
+    private static int TEST_MOVIES_COUNT = 20;
+    private static String TEST_MOVIE_TITLE_PREFIX = "GMDB JUNIT TEST-";
 
-    List<Movie> moviesList = new ArrayList<>();
+    private List<Movie> moviesList = new ArrayList<>();
 
     @Autowired
     MovieService service;
@@ -45,8 +45,8 @@ public class MovieControllerTests {
     MockMvc mvc;
 
     @Before
-    public void setUp() throws Exception {
-        Movie m = null;
+    public void setUp() {
+        Movie m;
         for (int i = 1; i < TEST_MOVIES_COUNT +1; i++) {
             m = new Movie();
             m.setTitle(TEST_MOVIE_TITLE_PREFIX + (i * 13));
@@ -77,5 +77,11 @@ public class MovieControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.movieId", is(testMovie.getMovieId().intValue())))
                 .andExpect(jsonPath("$.title", is(testMovie.getTitle())));
+    }
+
+    @Test
+    public void findRandomMovies() throws Exception{
+        mvc.perform(get("/gmdb/api/movies/rand?qty=2"))
+               .andExpect(status().isOk());
     }
 }
