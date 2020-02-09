@@ -1,7 +1,7 @@
-package com.galvanize.gmdb.movies.services;
+package com.galvanize.gmdb.movie.services;
 
-import com.galvanize.gmdb.movies.entities.Movie;
-import com.galvanize.gmdb.movies.repositories.MovieRepository;
+import com.galvanize.gmdb.movie.entities.Movie;
+import com.galvanize.gmdb.movie.repositories.MovieRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

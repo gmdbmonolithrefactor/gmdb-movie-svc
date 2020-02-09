@@ -1,8 +1,8 @@
-package com.galvanize.gmdb.movies.controllers;
+package com.galvanize.gmdb.movie.controllers;
 
-import com.galvanize.gmdb.movies.entities.Movie;
-import com.galvanize.gmdb.movies.repositories.MovieRepository;
-import com.galvanize.gmdb.movies.services.MovieService;
+import com.galvanize.gmdb.movie.entities.Movie;
+import com.galvanize.gmdb.movie.repositories.MovieRepository;
+import com.galvanize.gmdb.movie.services.MovieService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;

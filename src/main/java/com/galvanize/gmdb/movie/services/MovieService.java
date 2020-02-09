@@ -1,7 +1,7 @@
-package com.galvanize.gmdb.movies.services;
+package com.galvanize.gmdb.movie.services;
 
-import com.galvanize.gmdb.movies.entities.Movie;
-import com.galvanize.gmdb.movies.repositories.MovieRepository;
+import com.galvanize.gmdb.movie.entities.Movie;
+import com.galvanize.gmdb.movie.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -29,8 +29,8 @@ public class MovieService {
     }
 
     public Movie findMovieById(Long id){
-        Optional o =repository.findById(id);
-        return o.isPresent() ? (Movie)o.get() : null;
+        Optional<Movie> o =repository.findById(id);
+        return o.orElse(null);
     }
 
     public List<Movie> findRandomMovies(int qty){
