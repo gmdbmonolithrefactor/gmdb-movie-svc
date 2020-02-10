@@ -1,6 +1,6 @@
-package com.galvanize.gmdb.movies.repositories;
+package com.galvanize.gmdb.movie.repositories;
 
-import com.galvanize.gmdb.movies.entities.Movie;
+import com.galvanize.gmdb.movie.entities.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

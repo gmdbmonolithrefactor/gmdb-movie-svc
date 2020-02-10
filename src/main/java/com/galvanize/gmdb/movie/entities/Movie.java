@@ -1,4 +1,4 @@
-package com.galvanize.gmdb.movies.entities;
+package com.galvanize.gmdb.movie.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

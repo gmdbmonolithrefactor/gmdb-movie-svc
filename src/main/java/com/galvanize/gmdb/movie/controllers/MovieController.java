@@ -1,7 +1,7 @@
-package com.galvanize.gmdb.movies.controllers;
+package com.galvanize.gmdb.movie.controllers;
 
-import com.galvanize.gmdb.movies.entities.Movie;
-import com.galvanize.gmdb.movies.services.MovieService;
+import com.galvanize.gmdb.movie.entities.Movie;
+import com.galvanize.gmdb.movie.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,17 +10,17 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/gmdb/api/movies")
-public class MoviesController {
+public class MovieController {
 
     private MovieService service;
 
     @Autowired
-    public MoviesController(MovieService service) {
+    public MovieController(MovieService service) {
         this.service = service;
     }
 
-    @GetMapping("/")
-    public List<Movie> searchMovies(@RequestParam(name = "search", required = false) String searchString){
+    @GetMapping
+    public List<Movie> searchMovies(@RequestParam(name = "search", required = false, defaultValue = "") String searchString){
         return service.search(searchString);
     }
 

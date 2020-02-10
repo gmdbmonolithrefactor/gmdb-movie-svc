@@ -1,4 +1,4 @@
-package com.galvanize.gmdb.movies;
+package com.galvanize.gmdb;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +9,7 @@ import org.springframework.test.context.TestPropertySource;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestPropertySource(locations="classpath:test.properties")
-public class GmdbMoviesSvcApplicationTests {
+public class GmdbMovieSvcApplicationTests {
 
     @Test
     public void contextLoads() {
